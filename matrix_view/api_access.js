@@ -27,9 +27,14 @@ api_config = {
 function query_api(query,successfn) {
 	var xmlhttp=new XMLHttpRequest();
 
-	//make sure query works
+	//make sure query works (starts with &)
 	if(query) {
-		if (query[0]!='?') query = "?"+query;
+		if (query[0]!='&') {
+			if (query[0] == '?')
+				query = "&" + query.substring(1);
+			else
+				query = "&" + query;
+		}
 	} else {
 		query = ""
 	}
@@ -39,7 +44,7 @@ function query_api(query,successfn) {
 	if(successfn)
 		async=true;
 
-	xmlhttp.open("GET",api_config.url+query,async);
+	xmlhttp.open("GET",api_config.url+"?format=json"+query,async);
 
 	//for async calls: make sure successfn will be executed afterwards
 	if(async)
