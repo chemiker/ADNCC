@@ -10,7 +10,7 @@ api_config = {
 	 * The url can be absolute or relative to the executing html file, but should not conain the domain name (see XMLHttpRequest)
 	 *
 	 */
-	url: "../pull.php"
+	url: "../api-1.1/array.php"
 }
 
 
