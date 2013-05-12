@@ -9,12 +9,28 @@ function transform_cell(column_name,obj) {
 }
 function transform_cell_individual(column_name,obj) {
 	switch(column_name) {
+		
+		//name: add download link to name cell
 		case "name":
 			if(("download_link" in obj) && obj.download_link)
 		    	return '<a href="'+obj["download_link"]+'">'+obj["name"]+'</a>'
 			else
 				return obj["name"];
 			break;
+			
+		//dev_account: add links to profile pages
+		case "developer_accounts":
+			if(("developer_accounts" in obj) && obj.developer_accounts) {
+				var devaccs = obj.developer_accounts.replace(/\s/g, '').replace(/\n/g, '').replace(/@/g,'').split(','); //remove whitespace, remove the @, and split by ','
+				var res = ""
+				for (i in devaccs)
+					if (devaccs[i] != "")
+						res = res + ' <a href="https://alpha.app.net/'+devaccs[i]+'">@'+devaccs[i]+'</a>';
+				return res;
+			} else
+				return obj["developer_accounts"]
+			break;
+		
 		default:
 			return obj[column_name];
 	}
