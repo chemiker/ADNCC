@@ -1,17 +1,22 @@
 <html><head>
 <link rel="stylesheet" type="text/css" href="style.css">
 <script src="utils.js"></script>
-<script src="column_translation_en.js"></script>
+<script src="translate.js"></script>
 <script src="transformator.js"></script>
 <script src="api_access.js"></script>
 </head>
 <body>
 
+<div id="table_container">
+<div id="table_activity_indicator">Loading...</div>
+</div>
+
 <script>
 
 //function to be called after ajax query
 function showTable(input_obj){
-	document.getElementsByTagName("body")[0].appendChild(
+	document.getElementById("table_activity_indicator").remove();
+	document.getElementById("table_container").appendChild(
 			createTable(
 				input_obj,
 				getColumns(),
