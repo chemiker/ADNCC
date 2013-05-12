@@ -1,0 +1,31 @@
+<html><head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="utils.js"></script>
+<script src="column_translation_en.js"></script>
+<script src="transformator.js"></script>
+<script src="api_access.js"></script>
+</head>
+<body>
+
+<script>
+
+//function to be called after ajax query
+function showTable(input_obj){
+	document.getElementsByTagName("body")[0].appendChild(
+			createTable(
+				input_obj,
+				getColumns(),
+				transformator
+			)
+		);
+}
+
+//execute ajax query, and call showTable afterwards
+//just pass the whole page query to the api
+query_api(location.search,showTable);
+
+</script>
+
+
+</body>
+</html>

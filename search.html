@@ -1,0 +1,235 @@
+<!doctype html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="0;URL='http://adncc.nigma.de/'">
+
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Trocchi|Playfair+Display+SC' rel='stylesheet' type='text/css'>
+
+<script src="jquery-1.9.1.min.js"></script>
+<script src="jquery.tablesorter.js"></script>
+<script>
+
+var XMLHTTP = null;
+if (window.XMLHttpRequest) {
+    XMLHTTP = new XMLHttpRequest();
+} else if (window.ActiveXObject) {
+    try {
+        XMLHTTP =
+            new ActiveXObject("Msxml2.XMLHTTP");
+    } catch (ex) {
+    try {
+        XMLHTTP =
+            new ActiveXObject("Microsoft.XMLHTTP");
+    } catch (ex) {
+    }
+    }
+}
+
+function DatenAusgeben() {
+    if (XMLHTTP.readyState == 4)  {
+		document.getElementById("clients").innerHTML = XMLHTTP.responseText;
+		$("#clients").tablesorter();
+    }           
+}
+
+function dataRequest() {
+
+	var request = "pull_html.php?" + document.getElementById("name").value;
+	$.ajax({
+        url: request,
+      type: "POST",
+        success: function(data) {
+        	document.getElementById("clients").innerHTML = data;
+        	$("#clients").tablesorter();
+        }
+   });	
+}
+
+$(document).ready(function() 
+    { 
+    	XMLHTTP.open("POST", "pull_html.php");
+    	XMLHTTP.onreadystatechange = DatenAusgeben;
+    	XMLHTTP.send(null);   	
+    } 
+); 
+
+function add(id, text) {
+	document.getElementById(id).value = document.getElementById(id).value + text;
+}
+     
+
+</script>
+
+<style type="text/css">
+
+@font-face {
+	font-family: 'fontello';
+	src: url('fonts/fontello.eot');
+	src: url('fonts/fontello.eot?#iefix') format('embedded-opentype'),
+	       url('fonts/fontello.woff') format('woff'),
+	       url('fonts/fontello.ttf') format('truetype'),
+	       url('fonts/fontello.svg#fontello') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	font: 16px/1.8em 'Droid Sans', sans-serif;
+	background-color: #dadfdf;
+	color: #4d4d4d;
+}
+
+table {
+	font: 10px/2em Helvetica;
+	background-color: #e3eeee;
+}
+
+td {
+	background-color: #c3f8f9;
+	
+}
+
+th {
+	background-color: #b3e3e4;
+}
+	
+th, td {
+	border: 1px solid #9cc6c7;
+}
+
+td.yes {
+	background-color: green;
+}
+
+td.no {
+	background-color: red;
+}
+
+td.na {
+	background-color: yellow;
+}
+
+header, footer {
+	background-color: #696f6f;
+	min-height: 100px;
+}
+
+header h1 {
+	color: white;
+	width: 740px;
+	margin: 0px auto;
+	padding: 50px 0px 50px 0px;
+	font: 40px/40px 'Playfair Display SC', serif;
+}
+
+header h1:before {
+	content: "á  ";
+	font-family: 'fontello';
+	font-weight: normal;
+	font-size: 0.8em;
+	background-color: white;
+	display: block;
+	width: 60px;
+	height: 51px;
+	border-radius: 30px;
+	color: #696f6f;
+	float: left;
+	text-align: center;
+	padding: 9px 0px 0px 0px;
+	margin: -7px 20px 0px 0px;
+}
+
+#wrapper {
+	width: 800px;
+	margin: 0px auto;
+}
+
+#container {
+	width: 800px;
+	height: 600px;
+	overflow: auto;
+}
+
+input, textarea {
+	border: 1px solid #ccc;
+	color: #737373;
+	background-color: #f0f0f0;
+	font: 20px/1em 'Droid Sans', sans-serif;
+	padding: 5px 10px 5px 10px;
+	border-radius: 15px;
+}
+
+input:focus, textarea:focus {
+	background-color: #FFF;
+}
+
+textarea {
+	padding: 10px;
+}
+
+footer {
+	margin: 3em 0px 0px 0px;
+	text-align: center;
+	padding: 0.5em 0px 0px 0px;
+}
+
+div#description {
+	background-color: #d4d4d4;
+	padding: 20px 0px 20px 0px;
+	margin: 0px 0px 2em 0px;
+}
+
+div#description p, div#description form  {
+	width: 800px;
+	margin: 0px auto;
+}
+
+div#description p {
+	 margin-bottom: 2em;
+}
+
+div#description form {
+	text-align: center;
+}
+
+</style>
+
+</head>
+<body>
+
+<header>
+<h1>ADN-client-comparison</h1>
+</header>
+
+<div id="description">
+<p style="color: red;"><strong>WARNING:</strong> This website is in early beta phase! This is just a preview to get a basic idea about what this website will finally be about. Many features were not added yet. However, the basic functionallity is given.</p>
+<p>This website offers the possibility to browse and filter the <a href="https://docs.google.com/spreadsheet/ccc?key=0AjVIXWN8HnOedDZsOWY4SlNyaElQMElQN1FNbktFZGc#gid=0">ADN-Client Feature Matrix</a>
+by @nhk. The table can be ordered by clicking in the rows headings. Filters can be applied by entering them into the formular and submitting it. For instance <code>platform=iPhone</code> will display all Clients working on the iPhone.
+<code>platform=iPhone&private_messages=YES</code> will display all clients working on iPhone and support private messages. 
+</p>
+<p></p>
+
+<form action="javascript:dataRequest()"" method="get">
+	<input type="input" id="name"/>
+	<input type="submit" value="&#x1f50d;" style="font-family: 'fontello';"  />
+</form>
+</div>
+
+<div id="wrapper">
+<div id="container">
+<table id="clients" class="tablesorter"></table>
+</div>
+
+</div>
+
+<footer>&copy; 2013 by @nhk and @chemiker.</footer>
+
+</body>
+
+</div>
+</html>

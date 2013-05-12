@@ -1,0 +1,984 @@
+<!doctype html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset="utf-8">
+<title>App.net Client Comparison</title>
+
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Trocchi|Playfair+Display+SC' rel='stylesheet' type='text/css'>
+
+<script src="jquery-1.9.1.min.js"></script>
+<script src="jquery.tablesorter.js"></script>
+<script>
+
+	function absenden() {
+		formvalues = document.forms['selector'].elements;
+		var url = "";
+		
+		if($("input[name='platform']:checked").val() == 'Android') {
+			if(url == "") {
+				url += 'platform=Android';
+			} else {
+				url += '&platform=Android';
+			}
+		}
+		
+		if($("input[name='platform']:checked").val() == 'iPhone') {
+			if(url == "") {
+				url += 'platform=iPhone';
+			} else {
+				url += '&platform=iPhone';
+			}
+		}
+		
+		if($("input[name='platform']:checked").val() == 'iPad') {
+			if(url == "") {
+				url += 'platform=iPad';
+			} else {
+				url += '&platform=iPad';
+			}
+		}
+		
+		if($("input[name='platform']:checked").val() == 'iPhone/iPad') {
+			if(url == "") {
+				url += 'platform=iPhone/iPad';
+			} else {
+				url += '&platform=iPhone/iPad';
+			}
+		}
+		
+		if($("input[name='platform']:checked").val() == 'Windows Phone') {
+			if(url == "") {
+				url += 'platform=Windows Phone';
+			} else {
+				url += '&platform=Windows Phone';
+			}
+		}
+		
+		if($("input[name='platform']:checked").val() == 'Windows') {
+			if(url == "") {
+				url += 'platform=Windows';
+			} else {
+				url += '&platform=Windows';
+			}
+		}
+		
+		if($("input[name='platform']:checked").val() == 'Web') {
+			if(url == "") {
+				url += 'platform=Web';
+			} else {
+				url += '&platform=Web';
+			}
+		}
+		
+		if($("input[name='platform']:checked").val() == 'OS X') {
+			if(url == "") {
+				url += 'platform=OS X';
+			} else {
+				url += '&platform=OS X';
+			}
+		}
+		
+		if($("input[name='platform']:checked").val() == 'Linux') {
+			if(url == "") {
+				url += 'platform=Linux';
+			} else {
+				url += '&platform=Linux';
+			}
+		}
+		
+		if($("input[name='platform']:checked").val() == 'Symbian') {
+			if(url == "") {
+				url += 'platform=Symbian';
+			} else {
+				url += '&platform=Symbian';
+			}
+		}
+
+		
+		if(formvalues['platform'].value == 'Android') {
+			if(url == "") {
+				url += 'platform=Android';
+			} else {
+				url += '&platform=Android';
+			}
+		}
+		
+		if(formvalues['known_active_development'].checked == true) { 
+			if(url == "") {
+				url += 'known_active_development=YES';
+			} else {
+				url += '&known_active_development=YES';
+			}
+		}
+
+		if(formvalues['multiple_accounts'].checked == true) { 
+			if(url == "") {
+				url += 'multiple_accounts=YES';
+			} else {
+				url += '&multiple_accounts=YES';
+			}
+		}
+
+		if(formvalues['global_stream'].checked == true) { 
+			if(url == "") {
+				url += 'global_stream=YES';
+			} else {
+				url += '&global_stream=YES';
+			}
+		}
+
+		if(formvalues['unified_stream'].checked == true) { 
+			if(url == "") {
+				url += 'unified_stream=YES';
+			} else {
+				url += '&unified_stream=YES';
+			}
+		}
+
+		if(formvalues['filter_stream_by_language'].checked == true) { 
+			if(url == "") {
+				url += 'filter_stream_by_language=YES';
+			} else {
+				url += '&filter_stream_by_language=YES';
+			}
+		}
+
+		if(formvalues['private_messages'].checked == true) { 
+			if(url == "") {
+				url += 'private_messages=YES';
+			} else {
+				url += '&private_messages=YES';
+			}
+		}
+
+		if(formvalues['public_patter_rooms'].checked == true) { 
+			if(url == "") {
+				url += 'public_patter_rooms=YES';
+			} else {
+				url += '&public_patter_rooms=YES';
+			}
+		}
+
+		if(formvalues['private_patter_rooms'].checked == true) { 
+			if(url == "") {
+				url += 'private_patter_rooms=YES';
+			} else {
+				url += '&private_patter_rooms=YES';
+			}
+		}
+
+		if(formvalues['browse_patter_rooms'].checked == true) { 
+			if(url == "") {
+				url += 'browse_patter_rooms=YES';
+			} else {
+				url += '&browse_patter_rooms=YES';
+			}
+		}
+
+		if(formvalues['open_patter_room_by_url'].checked == true) { 
+			if(url == "") {
+				url += 'open_patter_room_by_url=YES';
+			} else {
+				url += '&open_patter_room_by_url=YES';
+			}
+		}
+
+		if(formvalues['show_mentions_to_people_i_dont_follow'].checked == true) { 
+			if(url == "") {
+				url += 'show_mentions_to_people_i_dont_follow=YES';
+			} else {
+				url += '&show_mentions_to_people_i_dont_follow=YES';
+			}
+		}
+
+		if(formvalues['show_starred_posts'].checked == true) { 
+			if(url == "") {
+				url += 'show_starred_posts=YES';
+			} else {
+				url += '&show_starred_posts=YES';
+			}
+		}
+
+		if(formvalues['interactions_view'].checked == true) { 
+			if(url == "") {
+				url += 'interactions_view=YES';
+			} else {
+				url += '&interactions_view=YES';
+			}
+		}
+
+		if(formvalues['push_notifications'].checked == true) { 
+			if(url == "") {
+				url += 'push_notifications=YES';
+			} else {
+				url += '&push_notifications=YES';
+			}
+		}
+
+		if(formvalues['drafts'].checked == true) { 
+			if(url == "") {
+				url += 'drafts=YES';
+			} else {
+				url += '&drafts=YES';
+			}
+		}
+
+		if(formvalues['outbox'].checked == true) { 
+			if(url == "") {
+				url += 'outbox=YES';
+			} else {
+				url += '&outbox=YES';
+			}
+		}
+
+		if(formvalues['username_completion'].checked == true) { 
+			if(url == "") {
+				url += 'username_completion=YES';
+			} else {
+				url += '&username_completion=YES';
+			}
+		}
+
+		if(formvalues['hashtag_completion'].checked == true) { 
+			if(url == "") {
+				url += 'hashtag_completion=YES';
+			} else {
+				url += '&hashtag_completion=YES';
+			}
+		}
+
+		if(formvalues['user_search'].checked == true) { 
+			if(url == "") {
+				url += 'user_search=YES';
+			} else {
+				url += '&user_search=YES';
+			}
+		}
+
+		if(formvalues['hashtag_search'].checked == true) { 
+			if(url == "") {
+				url += 'hashtag_search=YES';
+			} else {
+				url += '&hashtag_search=YES';
+			}
+		}
+
+		if(formvalues['save_hashtag_search'].checked == true) { 
+			if(url == "") {
+				url += 'save_hashtag_search=YES';
+			} else {
+				url += '&save_hashtag_search=YES';
+			}
+		}
+
+		if(formvalues['keyword_search'].checked == true) { 
+			if(url == "") {
+				url += 'keyword_search=YES';
+			} else {
+				url += '&keyword_search=YES';
+			}
+		}
+
+		if(formvalues['search_own_stream'].checked == true) { 
+			if(url == "") {
+				url += 'search_own_stream=YES';
+			} else {
+				url += '&search_own_stream=YES';
+			}
+		}
+
+		if(formvalues['block_user'].checked == true) { 
+			if(url == "") {
+				url += 'block_user=YES';
+			} else {
+				url += '&block_user=YES';
+			}
+		}
+
+		if(formvalues['report_post'].checked == true) { 
+			if(url == "") {
+				url += 'report_post=YES';
+			} else {
+				url += '&report_post=YES';
+			}
+		}
+
+		if(formvalues['hard_mute_user'].checked == true) { 
+			if(url == "") {
+				url += 'hard_mute_user=YES';
+			} else {
+				url += '&hard_mute_user=YES';
+			}
+		}
+
+		if(formvalues['soft_mute_user'].checked == true) { 
+			if(url == "") {
+				url += 'soft_mute_user=YES';
+			} else {
+				url += '&soft_mute_user=YES';
+			}
+		}
+
+		if(formvalues['mute_hashtag'].checked == true) { 
+			if(url == "") {
+				url += 'mute_hashtag=YES';
+			} else {
+				url += '&mute_hashtag=YES';
+			}
+		}
+
+		if(formvalues['mute_thread'].checked == true) { 
+			if(url == "") {
+				url += 'mute_thread=YES';
+			} else {
+				url += '&mute_thread=YES';
+			}
+		}
+
+		if(formvalues['mute_keyword'].checked == true) { 
+			if(url == "") {
+				url += 'mute_keyword=YES';
+			} else {
+				url += '&mute_keyword=YES';
+			}
+		}
+
+		if(formvalues['mute_client'].checked == true) { 
+			if(url == "") {
+				url += 'mute_client=YES';
+			} else {
+				url += '&mute_client=YES';
+			}
+		}
+
+		if(formvalues['hide_posts_seen_in_conversations'].checked == true) { 
+			if(url == "") {
+				url += 'hide_posts_seen_in_conversations=YES';
+			} else {
+				url += '&hide_posts_seen_in_conversations=YES';
+			}
+		}
+
+		if(formvalues['edit_profile'].checked == true) { 
+			if(url == "") {
+				url += 'edit_profile=YES';
+			} else {
+				url += '&edit_profile=YES';
+			}
+		}
+
+		if(formvalues['accessible'].checked == true) { 
+			if(url == "") {
+				url += 'accessible=YES';
+			} else {
+				url += '&accessible=YES';
+			}
+		}
+
+		if(formvalues['language_annotations'].checked == true) { 
+			if(url == "") {
+				url += 'language_annotations=YES';
+			} else {
+				url += '&language_annotations=YES';
+			}
+		}
+
+		if(formvalues['light_theme'].checked == true) { 
+			if(url == "") {
+				url += 'light_theme=YES';
+			} else {
+				url += '&light_theme=YES';
+			}
+		}
+
+		if(formvalues['dark_theme'].checked == true) { 
+			if(url == "") {
+				url += 'dark_theme=YES';
+			} else {
+				url += '&dark_theme=YES';
+			}
+		}
+
+		if(formvalues['stream_marker_support'].checked == true) { 
+			if(url == "") {
+				url += 'stream_marker_support=YES';
+			} else {
+				url += '&stream_marker_support=YES';
+			}
+		}
+
+		if(formvalues['inline_media'].checked == true) { 
+			if(url == "") {
+				url += 'inline_media=YES';
+			} else {
+				url += '&inline_media=YES';
+			}
+		}
+
+		if(formvalues['inline_media_in_private_messages'].checked == true) { 
+			if(url == "") {
+				url += 'inline_media_in_private_messages=YES';
+			} else {
+				url += '&inline_media_in_private_messages=YES';
+			}
+		}
+
+		if(formvalues['creation_of_inline_links'].checked == true) { 
+			if(url == "") {
+				url += 'creation_of_inline_links=YES';
+			} else {
+				url += '&creation_of_inline_links=YES';
+			}
+		}
+
+		if(formvalues['file_api_integration'].checked == true) { 
+			if(url == "") {
+				url += 'file_api_integration=YES';
+			} else {
+				url += '&file_api_integration=YES';
+			}
+		}
+		
+		if(formvalues['picture_services_integration'].checked == true) { 
+			if(url == "") {
+				url += 'picture_services_integration=YES';
+			} else {
+				url += '&picture_services_integration=YES';
+			}
+		}
+
+		if(formvalues['video_services_integration'].checked == true) { 
+			if(url == "") {
+				url += 'video_services_integration=YES';
+			} else {
+				url += '&video_services_integration=YES';
+			}
+		}
+
+		if(formvalues['read_later_services_integration'].checked == true) { 
+			if(url == "") {
+				url += 'read_later_services_integration=YES';
+			} else {
+				url += '&read_later_services_integration=YES';
+			}
+		}		
+
+		if(formvalues['post_current_location'].checked == true) { 
+			if(url == "") {
+				url += 'post_current_location=YES';
+			} else {
+				url += '&post_current_location=YES';
+			}
+		}
+
+		if(formvalues['places_api'].checked == true) { 
+			if(url == "") {
+				url += 'places_api=YES';
+			} else {
+				url += '&places_api=YES';
+			}
+		}
+
+		if(formvalues['now_playing'].checked == true) { 
+			if(url == "") {
+				url += 'now_playing=YES';
+			} else {
+				url += '&now_playing=YES';
+			}
+		}
+
+		if(formvalues['url_shortening'].checked == true) { 
+			if(url == "") {
+				url += 'url_shortening=YES';
+			} else {
+				url += '&url_shortening=YES';
+			}
+		}
+
+		if(formvalues['full_screen_mode'].checked == true) { 
+			if(url == "") {
+				url += 'full_screen_mode=YES';
+			} else {
+				url += '&full_screen_mode=YES';
+			}
+		}
+
+		if(formvalues['open_links_from_stream_view'].checked == true) { 
+			if(url == "") {
+				url += 'open_links_from_stream_view=YES';
+			} else {
+				url += '&open_links_from_stream_view=YES';
+			}
+		}
+
+		if(formvalues['save_conversations'].checked == true) { 
+			if(url == "") {
+				url += 'save_conversations=YES';
+			} else {
+				url += '&save_conversations=YES';
+			}
+		}
+
+		if(formvalues['configurable_fonts'].checked == true) { 
+			if(url == "") {
+				url += 'configurable_fonts=YES';
+			} else {
+				url += '&configurable_fonts=YES';
+			}
+		}
+
+		if(formvalues['twitter_crossposting'].checked == true) { 
+			if(url == "") {
+				url += 'twitter_crossposting=YES';
+			} else {
+				url += '&twitter_crossposting=YES';
+			}
+		}
+
+		if(formvalues['facebook_crossposting'].checked == true) { 
+			if(url == "") {
+				url += 'facebook_crossposting=YES';
+			} else {
+				url += '&facebook_crossposting=YES';
+			}
+		}
+
+		if(formvalues['buffer_integration'].checked == true) { 
+			if(url == "") {
+				url += 'buffer_integration=YES';
+			} else {
+				url += '&buffer_integration=YES';
+			}
+		}
+
+		if(formvalues['show_twitter_timeline'].checked == true) { 
+			if(url == "") {
+				url += 'show_twitter_timeline=YES';
+			} else {
+				url += '&show_twitter_timeline=YES';
+			}
+		}
+
+		if(formvalues['display_multiple_streams_at_once'].checked == true) { 
+			if(url == "") {
+				url += 'display_multiple_streams_at_once=YES';
+			} else {
+				url += '&display_multiple_streams_at_once=YES';
+			}
+		}
+
+		if(formvalues['landscape_view_of_streams'].checked == true) { 
+			if(url == "") {
+				url += 'landscape_view_of_streams=YES';
+			} else {
+				url += '&landscape_view_of_streams=YES';
+			}
+		}
+
+		if(formvalues['landscape_compose'].checked == true) { 
+			if(url == "") {
+				url += 'landscape_compose=YES';
+			} else {
+				url += '&landscape_compose=YES';
+			}
+		}
+
+		if(formvalues['text_expander_support'].checked == true) { 
+			if(url == "") {
+				url += 'text_expander_support=YES';
+			} else {
+				url += '&text_expander_support=YES';
+			}
+		}
+		
+		if(formvalues['mail_post'].checked == true) { 
+			if(url == "") {
+				url += 'mail_post=YES';
+			} else {
+				url += '&mail_post=YES';
+			}
+		}
+
+		if(formvalues['1password_integration'].checked == true) { 
+			if(url == "") {
+				url += '1password_integration=YES';
+			} else {
+				url += '&1password_integration=YES';
+			}
+		}
+
+		if(formvalues['url_schemes'].checked == true) { 
+			if(url == "") {
+				url += 'url_schemes=YES';
+			} else {
+				url += '&url_schemes=YES';
+			}
+		}
+
+		if(formvalues['live_tile_support'].checked == true) { 
+			if(url == "") {
+				url += 'live_tile_support=YES';
+			} else {
+				url += '&live_tile_support=YES';
+			}
+		}
+		
+		if(formvalues['repost_from_another_account'].checked == true) { 
+			if(url == "") {
+				url += 'repost_from_another_account=YES';
+			} else {
+				url += '&repost_from_another_account=YES';
+			}
+		}
+		
+		if(formvalues['quote_from_another_account'].checked == true) { 
+			if(url == "") {
+				url += 'quote_from_another_account=YES';
+			} else {
+				url += '&quote_from_another_account=YES';
+			}
+		}
+		
+		if(formvalues['star_from_another_account'].checked == true) { 
+			if(url == "") {
+				url += 'star_from_another_account=YES';
+			} else {
+				url += '&star_from_another_account=YES';
+			}
+		}
+		
+		if(formvalues['show_verification_status'].checked == true) { 
+			if(url == "") {
+				url += 'show_verification_status=YES';
+			} else {
+				url += '&show_verification_status=YES';
+			}
+		}
+		
+		if(formvalues['open_link_to_patter_room_in_app'].checked == true) { 
+			if(url == "") {
+				url += 'open_link_to_patter_room_in_app=YES';
+			} else {
+				url += '&open_link_to_patter_room_in_app=YES';
+			}
+		}
+		
+		if(formvalues['relative_time_stamps'].checked == true) { 
+			if(url == "") {
+				url += 'relative_time_stamps=YES';
+			} else {
+				url += '&relative_time_stamps=YES';
+			}
+		}
+		
+		if(formvalues['absolute_time_stamps'].checked == true) { 
+			if(url == "") {
+				url += 'absolute_time_stamps=YES';
+			} else {
+				url += '&absolute_time_stamps=YES';
+			}
+		}
+		
+		if(formvalues['broadcast_message'].checked == true) { 
+			if(url == "") {
+				url += 'broadcast_message=YES';
+			} else {
+				url += '&broadcast_message=YES';
+			}
+		}
+
+		
+		var request = "pull_html.php?" + url;
+			$.ajax({
+       		 url: request,
+      		type: "POST",
+       		 success: function(data) {
+        			
+        			$("#client-table").tablesorter();
+        		 		if(data == "") {
+       		 			document.getElementById("client-table").innerHTML = "Sorry, no clients are available, suitable for all your requirements.";
+       		 		} else {
+	        			document.getElementById("client-table").innerHTML = data;    			
+	        		}       			
+        		}
+  			 });	
+  			 
+  		var request2 = "pull_list.php?" + url;
+			$.ajax({
+       		 url: request2,
+      		type: "POST",
+       		 success: function(data) {
+       		 		if(data == "") {
+       		 			document.getElementById("client-list").innerHTML = "Sorry, no clients are available suitable for all your requirements.";
+       		 		} else {
+	        			document.getElementById("client-list").innerHTML = data;      			
+	        		}
+        		}
+  			 });
+	}
+
+
+var XMLHTTP = null;
+if (window.XMLHttpRequest) {
+    XMLHTTP = new XMLHttpRequest();
+} else if (window.ActiveXObject) {
+    try {
+        XMLHTTP =
+            new ActiveXObject("Msxml2.XMLHTTP");
+    } catch (ex) {
+    try {
+        XMLHTTP =
+            new ActiveXObject("Microsoft.XMLHTTP");
+    } catch (ex) {
+    }
+    }
+}
+
+function DatenAusgeben_table() {
+    if (XMLHTTP.readyState == 4)  {
+		document.getElementById("client-table").innerHTML = XMLHTTP.responseText;
+		$("#client-table").tablesorter();
+		$("#client-table").toggle();
+    }           
+}
+
+function dataRequest() {
+
+	var request = "pull_html.php?" + document.getElementById("name").value;
+	$.ajax({
+        url: request,
+      type: "POST",
+        success: function(data) {
+        	document.getElementById("client-table").innerHTML = data;
+        	$("#client-table").tablesorter();
+        }
+   });	
+}
+
+$(document).ready(function() 
+    { 
+    	XMLHTTP.open("POST", "pull_html.php");
+    	XMLHTTP.onreadystatechange = DatenAusgeben_table;
+    	XMLHTTP.send(null);   	
+    	$("#platform_fade").click(function () {$("#platforms").slideToggle("fast");});
+    	$("#general_fade").click(function () {$("#general").slideToggle("fast");});
+    	$("#thirdparty_fade").click(function () {$("#thirdparty").slideToggle("fast");});
+    	$("#reading_stream_fade").click(function () {$("#reading_stream").slideToggle("fast");});
+    	$("#privacy_fade").click(function () {$("#privacy").slideToggle("fast");});
+    	$("#customization_fade").click(function () {$("#customization").slideToggle("fast");});
+    	$("#misc_fade").click(function () {$("#misc").slideToggle("fast");});
+    	$("#patter_fade").click(function () {$("#patter").slideToggle("fast");});
+    	$("#multiacc_fade").click(function () {$("#multiacc").slideToggle("fast");});
+    	
+    	$("#list_toggle").click(function () {
+    		$("#client-list").toggle();
+    		$("#client-table").toggle();
+    	});   	
+    	
+    } 
+); 
+
+function add(id, text) {
+	document.getElementById(id).value = document.getElementById(id).value + text;
+}
+
+
+
+
+
+</script>
+</head>
+<body>
+
+<header>
+<h1>ADNCC</h1>
+<div id="description" style="font-family: 'fontello';">App.net Client Comparison</div>
+</header>
+
+<div id="wrapper">
+	
+	<div id="tools">
+		<a href="#intro" class="hide">jump to Content</a>
+		<a href="http://adn-client-comparison.nigma.de/">Client Comparison</a> | 
+		<a href="http://adn-client-comparison.nigma.de/alt.htm">Barrier-free version</a> | 
+		<a href="http://e.nigma.de/2013/04/adncc-api-version-0-7b/">API</a>
+	</div>
+	
+	<div id="intro">
+	<h2>Hello there,</h2>
+	<p>
+	this is <abbr title="App Dot Net Client Comparison">ADNCC</abbr>, <strong> a number of tools to help you find the most suitable app.net-client for your needs</strong>.
+	</p><p>
+	You can select platforms and features which are divided by categories in the next section. While you are selecting features, you will directly see the clients that fit them. By pushing the “Reset selection button” you can clear your choices and start from scratch.
+	</p><p>
+	If you want more details than the list with the results offers you, you can switch anytime to the table-view with the appropriate button. It will show you in detail what your already selected clients can or can’t do.
+	</p><p>
+	<abbr title="App Dot Net Client Comparison">ADNCC</abbr> offers also an <abbr title="Application Programming Interface">API</abbr>, which pulls data from the ADN Client Feature Matrix. This site is an example what you can do with it. You can find the documentation to the API on the top of the site.
+	</p><p>
+	Please feel free to contact us, if you have any kind of feedback. You find links to our app.net-accounts at the bottom of the page.
+	</p><p>
+	Finally, we wish you good luck finding your desired app.net client.
+	</p><p>
+	<a href="http://flattr.com/thing/1307892/App-net-Client-Comparison" target="_blank"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
+	</p></div>
+	<h2>Make your choice</h2>
+	<form name="selector" style="padding: 0px 0px 50px 0px;">
+		
+		<h3 id="platform_fade">Platform</h3>
+		<fieldset id="platforms" class="hide">
+			<legend class="hide">Platform</legend>
+				<input onclick="absenden()" type="radio" name="platform" id="android" value="Android" /><label for="android">Android</label>
+				<input onclick="absenden()" type="radio" name="platform" id="iphone" value="iPhone" /><label for="iphone">iPhone</label>
+				<input onclick="absenden()" type="radio" name="platform" id="ipad" value="iPad" /><label for="ipad">iPad</label>
+				<input onclick="absenden()" type="radio" name="platform" id="iphoneipad" value="iPhone/iPad" /><label for="iphoneipad">iPhone/iPad</label>
+				<input onclick="absenden()" type="radio" name="platform" id="windowsphone" value="Windows Phone" /><label for="windowsphone">Windows Phone</label>
+				<input onclick="absenden()" type="radio" name="platform" id="windows" value="Windows" /><label for="windows">Windows</label>
+				<input onclick="absenden()" type="radio" name="platform" id="web" value="Web" /><label for="web">Web</label>
+				<input onclick="absenden()" type="radio" name="platform" id="osx" value="OS X" /><label for="osx">OS X</label>
+				<input onclick="absenden()" type="radio" name="platform" id="linux" value="Linux" /><label for="linux">Linux</label>
+				<input onclick="absenden()" type="radio" name="platform" id="symbian" value="symbian" /><label for="symbian">Symbian</label>
+				<input onclick="absenden()" type="radio" name="platform" id="nochoice" value="nochoice" checked /><label for="nochoice">Multiplatform / No choice of platform</label>
+		</fieldset>
+	
+		<h3 id="general_fade">General</h3>
+		<fieldset class="hide" id="general">
+			<legend class="hide">General</legend>
+					<input onclick="absenden()" type="checkbox" id="known_active_development" name="known_active_development" /> <label for="known_active_development">Active Development</label>
+					<input onclick="absenden()" type="checkbox" id="multiple_accounts" name="multiple_accounts" /> <label for="multiple_accounts">Multiple Accounts</label>
+					<input onclick="absenden()" type="checkbox" id="edit_profile" name="edit_profile" /> <label for="edit_profile">Edit profile</label>
+					<input onclick="absenden()" type="checkbox" id="drafts" name="drafts" /> <label for="drafts">Drafts</label>
+					<input onclick="absenden()" type="checkbox" id="outbox" name="outbox" /> <label for="outbox">Outbox</label>	
+					<input onclick="absenden()" type="checkbox" id="push_notifications" name="push_notifications" /> <label for="push_notifications">Push notifications</label>
+					<input onclick="absenden()" type="checkbox" id="accessible" name="accessible" /> <label for="accessible">Accessible</label>
+					<input onclick="absenden()" type="checkbox" id="full_screen_mode" name="full_screen_mode" /> <label for="full_screen_mode">Full screen mode</label>
+					<input onclick="absenden()" type="checkbox" id="global_stream" name="global_stream" /> <label for="global_stream">Global stream</label>
+					<input onclick="absenden()" type="checkbox" id="unified_stream" name="unified_stream" /> <label for="unified_stream">Unified Stream</label>
+					<input onclick="absenden()" type="checkbox" id="show_verification_status" name="show_verification_status" /> <label for="show_verification_status">Show verification status</label>
+					
+		</fieldset>
+		
+		<h3 id="thirdparty_fade">3rd party &amp; Social Services</h3>
+		<fieldset class="hide" id="thirdparty">
+			<legend class="hide">3rd party &amp; Social Services</legend>
+					<input onclick="absenden()" type="checkbox" id="1password_integration" name="1password_integration" /> <label for="1password_integration">1Password integration</label>
+					<input onclick="absenden()" type="checkbox" id="twitter_crossposting" name="twitter_crossposting" /> <label for="twitter_crossposting">Twitter crossposting</label>
+					<input onclick="absenden()" type="checkbox" id="facebook_crossposting" name="facebook_crossposting" /> <label for="facebook_crossposting">Facebook crossposting</label>
+					<input onclick="absenden()" type="checkbox" id="post_current_location" name="post_current_location" /> <label for="post_current_location">Post current Location</label>
+					<input onclick="absenden()" type="checkbox" id="mail_post" name="mail_post" /> <label for="mail_post">Mail Post</label>
+					<input onclick="absenden()" type="checkbox" id="places_api" name="places_api" /> <label for="places_api">Places API</label>
+					<input onclick="absenden()" type="checkbox" id="now_playing" name="now_playing" /> <label for="now_playing">Now playing</label>
+					<input onclick="absenden()" type="checkbox" id="show_twitter_timeline" name="show_twitter_timeline" /> <label for="show_twitter_timeline">Show Twitter timeline</label>
+					<input onclick="absenden()" type="checkbox" id="picture_services_integration" name="picture_services_integration" /> <label for="picture_services_integration">Picture services integration</label>
+					<input onclick="absenden()" type="checkbox" id="video_services_integration" name="video_services_integration" /> <label for="video_services_integration">Video services integration</label>
+					<input onclick="absenden()" type="checkbox" id="read_later_services_integration" name="read_later_services_integration" /> <label for="read_later_services_integration">Read later services integration</label>
+
+		</fieldset>
+		
+		<h3 id="multiacc_fade">Multi-account actions</h3>
+		<fieldset class="hide" id="multiacc">
+			<legend class="hide">Multi-account actions</legend>
+					<input onclick="absenden()" type="checkbox" id="repost_from_another_account" name="repost_from_another_account" /> <label for="repost_from_another_account">Repost from another account</label>
+					<input onclick="absenden()" type="checkbox" id="quote_from_another_account" name="quote_from_another_account" /> <label for="quote_from_another_account">Quote from another account</label>
+					<input onclick="absenden()" type="checkbox" id="star_from_another_account" name="star_from_another_account" /> <label for="star_from_another_account">Star from another account</label>
+
+		</fieldset>
+		
+		<h3 id="patter_fade">Patter</h3>
+		<fieldset class="hide" id="patter">
+			<legend class="hide">Patter</legend>
+					<input onclick="absenden()" type="checkbox" id="public_patter_rooms" name="public_patter_rooms" /> <label for="public_patter_rooms">Public Patter rooms</label>
+					<input onclick="absenden()" type="checkbox" id="private_patter_rooms" name="private_patter_rooms" /> <label for="private_patter_rooms">Private Patter rooms</label>
+					<input onclick="absenden()" type="checkbox" id="browse_patter_rooms" name="browse_patter_rooms" /> <label for="browse_patter_rooms">Browse Patter rooms</label>
+					<input onclick="absenden()" type="checkbox" id="open_patter_room_by_url" name="open_patter_room_by_url" /> <label for="open_patter_room_by_url">Open Patter rooms by URL</label>
+					<input onclick="absenden()" type="checkbox" id="open_link_to_patter_room_in_app" name="open_link_to_patter_room_in_app" /> <label for="open_link_to_patter_room_in_app">Open link to patter-room in App</label>
+					<input onclick="absenden()" type="checkbox" id="broadcast_message" name="broadcast_message" /> <label for="broadcast_message">Broadcast message</label>
+
+		</fieldset>
+		
+		<h3 id="reading_stream_fade">Reading &amp; Stream</h3>
+		<fieldset class="hide" id="reading_stream">
+			<legend class="hide">Reading &amp; Stream</legend>
+					<input onclick="absenden()" type="checkbox" id="filter_stream_by_language" name="filter_stream_by_language" /> <label for="filter_stream_by_language">Filter Stream by language</label>
+					<input onclick="absenden()" type="checkbox" id="show_mentions_to_people_i_dont_follow" name="show_mentions_to_people_i_dont_follow" /> <label for="show_mentions_to_people_i_dont_follow">Show mentions to people I dont follow</label>
+					<input onclick="absenden()" type="checkbox" id="show_starred_posts" name="show_starred_posts" /> <label for="show_starred_posts">Show starred Posts</label>
+					<input onclick="absenden()" type="checkbox" id="inline_media" name="inline_media" /> <label for="inline_media">Inline media</label>
+					<input onclick="absenden()" type="checkbox" id="inline_media_in_private_messages" name="inline_media_in_private_messages" /> <label for="inline_media_in_private_messages">Inline media in private messages</label>
+					<input onclick="absenden()" type="checkbox" id="landscape_view_of_streams" name="landscape_view_of_streams" /> <label for="landscape_view_of_streams">Landscape view of streams</label>
+					<input onclick="absenden()" type="checkbox" id="landscape_compose" name="landscape_compose" /> <label for="landscape_compose">Landscape compose</label>
+					<input onclick="absenden()" type="checkbox" id="private_messages" name="private_messages" /> <label for="private_messages">Private Messages</label>
+					<input onclick="absenden()" type="checkbox" id="username_completion" name="username_completion" /> <label for="username_completion">Username completion</label>
+					<input onclick="absenden()" type="checkbox" id="hashtag_completion" name="hashtag_completion" /> <label for="hashtag_completion">Hashtag completion</label>
+					<input onclick="absenden()" type="checkbox" id="interactions_view" name="interactions_view" /> <label for="interactions_view">Interactions view</label>
+					<input onclick="absenden()" type="checkbox" id="display_multiple_streams_at_once" name="display_multiple_streams_at_once" /> <label for="display_multiple_streams_at_once">Display multiple streams at once</label>
+					<input onclick="absenden()" type="checkbox" id="url_shortening" name="url_shortening" /> <label for="url_shortening">URL shortening</label>
+					<input onclick="absenden()" type="checkbox" id="search_own_stream" name="search_own_stream" /> <label for="search_own_stream">Search own stream</label>
+					<input onclick="absenden()" type="checkbox" id="user_search" name="user_search" /> <label for="user_search">User search</label>
+					<input onclick="absenden()" type="checkbox" id="hashtag_search" name="hashtag_search" /> <label for="hashtag_search">Hashtag search</label>
+					<input onclick="absenden()" type="checkbox" id="save_hashtag_search" name="save_hashtag_search" /> <label for="save_hashtag_search">Save hashtag search</label>
+					<input onclick="absenden()" type="checkbox" id="keyword_search" name="keyword_search" /> <label for="keyword_search">Keyword search</label>
+					<input onclick="absenden()" type="checkbox" id="open_links_from_stream_view" name="open_links_from_stream_view" /> <label for="open_links_from_stream_view">Open links from Stream view</label>
+					<input onclick="absenden()" type="checkbox" id="save_conversations" name="save_conversations" /> <label for="save_conversations">Save conversations</label>
+					<input onclick="absenden()" type="checkbox" id="absolute_time_stamps" name="absolute_time_stamps" /> <label for="absolute_time_stamps">Absolute time stamps</label>
+					<input onclick="absenden()" type="checkbox" id="relative_time_stamps" name="relative_time_stamps" /> <label for="relative_time_stamps">Relative time stamps</label>
+
+		</fieldset>
+		
+		<h3 id="privacy_fade">Block &amp; Mute</h3>
+		<fieldset class="hide" id="privacy">
+			<legend class="hide">Block &amp; Mute</legend>
+					<input onclick="absenden()" type="checkbox" id="hard_mute_user" name="hard_mute_user" /> <label for="hard_mute_user">Hard mute user</label>
+					<input onclick="absenden()" type="checkbox" id="soft_mute_user" name="soft_mute_user" /> <label for="soft_mute_user">Soft mute user</label>
+					<input onclick="absenden()" type="checkbox" id="mute_hashtag" name="mute_hashtag" /> <label for="mute_hashtag">Mute hashtag</label>
+					<input onclick="absenden()" type="checkbox" id="mute_thread" name="mute_thread" /> <label for="mute_thread">Mute thread</label>
+					<input onclick="absenden()" type="checkbox" id="mute_keyword" name="mute_keyword" /> <label for="mute_keyword">Mute keyword</label>
+					<input onclick="absenden()" type="checkbox" id="mute_client" name="mute_client" /> <label for="mute_client">Mute client</label>
+					<input onclick="absenden()" type="checkbox" id="hide_posts_seen_in_conversations" name="hide_posts_seen_in_conversations" /> <label for="hide_posts_seen_in_conversations">Hide posts seen in conversations</label>
+					<input onclick="absenden()" type="checkbox" id="block_user" name="block_user" /> <label for="block_user">Block user</label>
+					<input onclick="absenden()" type="checkbox" id="report_post" name="report_post" /> <label for="report_post">Report post</label>
+				
+		</fieldset>
+		
+		<h3 id="customization_fade">Customization</h3>
+		<fieldset class="hide" id="customization">
+			<legend class="hide">Customization</legend>
+					<input onclick="absenden()" type="checkbox" id="light_theme" name="light_theme" /> <label for="light_theme">Light theme</label>
+					<input onclick="absenden()" type="checkbox" id="dark_theme" name="dark_theme" /> <label for="dark_theme">Dark theme</label>
+					<input onclick="absenden()" type="checkbox" id="configurable_fonts" name="configurable_fonts" /> <label for="configurable_fonts">Configurable fonts</label>
+								
+		</fieldset>
+		
+		<h3 id="misc_fade">Misc</h3>
+		<fieldset class="hide" id="misc">
+			<legend class="hide">Misc</legend>
+					<input onclick="absenden()" type="checkbox" id="buffer_integration" name="buffer_integration" /> <label for="buffer_integration">Buffer integration</label>
+					<input onclick="absenden()" type="checkbox" id="text_expander_support" name="text_expander_support" /> <label for="text_expander_support">Text expander support</label>
+					<input onclick="absenden()" type="checkbox" id="url_schemes" name="url_schemes" /> <label for="url_schemes">URL schemes</label>
+					<input onclick="absenden()" type="checkbox" id="live_tile_support" name="live_tile_support" /> <label for="live_tile_support">Live tile support</label>
+					<input onclick="absenden()" type="checkbox" id="language_annotations" name="language_annotations" /> <label for="language_annotations">Language annotations</label>
+					<input onclick="absenden()" type="checkbox" id="stream_marker_support" name="stream_marker_support" /> <label for="stream_marker_support">Stream marker support</label>
+					<input onclick="absenden()" type="checkbox" id="creation_of_inline_links" name="creation_of_inline_links" /> <label for="creation_of_inline_links">Creation of inline links</label>
+					<input onclick="absenden()" type="checkbox" id="file_api_integration" name="file_api_integration" /> <label for="file_api_integration">File API integration</label>							
+		</fieldset>
+		
+		<input type="reset" value="Reset selection" style="margin: 2em 0px 50px 0px; font-size: 1em; float: right;" onclick="absenden()" />
+		
+	</form>
+
+<h2>Your Clients</h2>
+
+
+<span id="list_toggle">Toggle list/table</span>
+
+<div id="results">
+	<div id="client-list">Please choose several parameters to display suitable clients.</div>
+	<div id="table_wrapper" style="overflow: auto;"><table id="client-table" class="tablesorter" class="hide"></table></div>
+</div>
+
+</div>
+
+<footer>ADNCC is a project by by <a href="https://alpha.app.net/nhk">@nhk</a> and <a href="https://alpha.app.net/chemiker">@chemiker</a>. <br />We cannot guarantee for the accuracy of the information displayed on this site.<br />&copy; 2013</footer>
+
+</body>
+
+
+</html>
