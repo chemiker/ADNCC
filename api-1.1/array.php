@@ -162,7 +162,7 @@
 	// Filter nach Name, oder Liste
 	
 	if(count($names) == 0) {
-		if($_GET["name"] == "") {
+		if(!isset($_GET["name"]) OR $_GET["name"] == "") {
 			$raw_result = $key_value_pairs;
 		} else {
 			foreach($key_value_pairs as $key => $value) {
