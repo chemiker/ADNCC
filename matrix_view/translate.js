@@ -1,3 +1,5 @@
+// translation for the whole program:
+// language codes: ISO 639-1
 translation = {
 	"name":{ en: "Name" },
 	"platform":{ en: "Platform" },
@@ -108,4 +110,10 @@ function translate(str,lang,lang_fallback) {
 	}
 }
 
-function translate_en(str) { return translate(str,"en","en"); }
+function detect_language() {
+	var lang = navigator.language || window.navigator.language;
+	if (lang) return lang.substring(0,2);
+	return "en";
+}
+
+function translate_auto_en(str) { return translate(detect_language(),"en")}

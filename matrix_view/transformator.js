@@ -63,7 +63,7 @@ function td_classes(string,obj) {
 
 transformator = {
 	cell: transform_cell,
-	header: translate_en,
+	header: translate_auto_en,
 	tr_class: tr_classes,
 	td_class: td_classes,
 	columns_to_remove: ["download_link"]
