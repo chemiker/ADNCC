@@ -116,4 +116,4 @@ function detect_language() {
 	return "en";
 }
 
-function translate_auto_en(str) { return translate(detect_language(),"en")}
+function translate_auto_en(str) { return translate(str, detect_language(),"en")}
