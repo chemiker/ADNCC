@@ -37,6 +37,7 @@ for(i in api_config.accepted_params) {
 	if(api_config.accepted_params[i] in params) {
 		if(param_str != "") param_str = param_str+"&";
 		param_str = param_str + api_config.accepted_params[i] + "=" + params[api_config.accepted_params[i]];
+	}
 }
 
 //execute ajax query, and call showTable afterwards
