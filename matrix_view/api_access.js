@@ -48,8 +48,11 @@ function query_api(query,successfn) {
 	var async=false;
 	if(successfn)
 		async=true;
-
-	xmlhttp.open("GET",api_config.url+"?format=json"+query,async);
+		
+	var query_complete = "?format=json"+query;
+	
+	console.log("querying API: "+query_complete;
+	xmlhttp.open("GET",api_config.url+query_complete,async);
 
 	//for async calls: make sure successfn will be executed afterwards
 	if(async)
