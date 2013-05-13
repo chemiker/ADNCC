@@ -51,7 +51,7 @@ function query_api(query,successfn) {
 		
 	var query_complete = "?format=json"+query;
 	
-	console.log("querying API: "+query_complete;
+	console.log("querying API: "+query_complete);
 	xmlhttp.open("GET",api_config.url+query_complete,async);
 
 	//for async calls: make sure successfn will be executed afterwards
