@@ -94,12 +94,18 @@ function translate(str,lang,lang_fallback) {
 	if(str in translation) {
 		if(lang in translation[str])
 			return translation[str][lang]
-		else if (lang_fallback in translation[str])
+		else if (lang_fallback in translation[str]) {
+			console.log("translate: unable to translate "+str+" to "+lang+", but successful to "+lang_fallback);
 			return translation[str][lang_fallback]
-		else return str;
+		} else {
+			console.log("translate: unable to translate "+str);
+			return str;
+		}
 	}
-	else
+	else {
+		console.log("translate: unable to translate "+str);
 		return str;
+	}
 }
 
 function translate_en(str) { return translate(str,"en","en"); }
