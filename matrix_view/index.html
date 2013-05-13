@@ -30,9 +30,18 @@ function showTable(input_obj){
 		);
 }
 
+//read out query, create api param string
+var params = get_params();
+var param_str = "";
+for(i in api_config.accepted_params) {
+	if(api_config.accepted_params[i] in params) {
+		if(param_str != "") param_str = param_str+"&";
+		param_str = param_str + api_config.accepted_params[i] + "=" + params[api_config.accepted_params[i]];
+}
+
 //execute ajax query, and call showTable afterwards
 //just pass the whole page query to the api
-query_api(location.search,showTable);
+query_api(params,showTable);
 
 </script>
 

@@ -10,7 +10,12 @@ api_config = {
 	 * The url can be absolute or relative to the executing html file, but should not conain the domain name (see XMLHttpRequest)
 	 *
 	 */
-	url: "../api-1.1/array.php"
+	url: "../api-1.1/array.php",
+	
+	/*
+	 * This should contain accepted api params, without "format"
+	 */
+	accepted_params: ["name","filter","show","hide"]
 }
 
 
