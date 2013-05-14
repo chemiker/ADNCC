@@ -73,6 +73,7 @@
 	$hide = array(); // Spalten, welche nicht gezeigt werden sollen
 	$raw_result = array(); // Gefilterte Daten, allerdings noch nicht in der finalen Darstellung
 	$filter = array(); // Eingebene Filter 
+	$result = array();
 
 	// Mögliche GET Anfragen
 	$possible_get = array("name","show","hide","format","filter");
@@ -214,18 +215,19 @@
 		}
 	}
 	
+	// Result generieren
+	foreach($filtered_raw_result as $result_in) {
+		array_push($result, $result_in);
+	}	
+	
 	// Alles ist gefiltert - Nun geht es an die Ausgabe
 	if(in_array($_GET["format"], $possible_output_format)) {
 		switch($_GET["format"]) {
 			case "json":
-				foreach($filtered_raw_result as $result) {
 					print_r(json_encode($result));
-				}
 			break;
 			case "php":
-				foreach($filtered_raw_result as $result) {
 					print_r($result);
-				}
 			break;
 		}
 	} else {
