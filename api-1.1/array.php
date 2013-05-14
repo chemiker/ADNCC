@@ -56,6 +56,7 @@
 			foreach($required_properties as $requirement => $value) {			
 				if(!str_vorhanden($clients[$id][$requirement], $required_properties[$requirement])) {
 					unset($clients[$id]);
+					break;
 				}
 			} 
 		}
