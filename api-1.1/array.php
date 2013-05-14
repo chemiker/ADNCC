@@ -79,7 +79,7 @@
 	$possible_get = array("name","show","hide","format","filter");
 	
 	// Mögliche output formate
-	$possible_output_format = array("json","js","php","html");
+	$possible_output_format = array("json","js","php","html","header","hAppy");
 	
 	// Headlines entfernen und Rohdaten anlegen
 	while (($line = fgetcsv($f)) !== false) {
@@ -228,6 +228,27 @@
 			break;
 			case "php":
 					print_r($result);
+			break;
+			case "header":
+					print_r(json_encode($header_dictionary));
+			break;
+			case "hAppy":
+				foreach($key_value_pairs as $key => $value) {
+					foreach($key_value_pairs[$key] as $key2 => $value2) {
+					if($key2 !== "name") { 	
+						if(substr_count(strtoupper(substr($value2, 0, 3)), "YES") OR substr_count(strtoupper(substr($value2, 0, 3)), "NO")) { //$value2 == "" OR 
+							if($value2 == "") {
+					
+							} else {
+								$key_value_pairs[$key][$key2] = substr($value2, 0, 3);
+							}
+						} else {
+							unset($key_value_pairs[$key][$key2]);
+						}
+						}
+					}
+				}
+				echo json_encode($key_value_pairs);
 			break;
 		}
 	} else {
