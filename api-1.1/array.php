@@ -53,9 +53,11 @@
 	function kick_clients_by_properties($clients, $required_properties) {
 		$finish_him = array();
 		foreach($clients as $id => $fields) {
-			foreach($required_properties as $requirement => $value) {			
-				if(!str_vorhanden($clients[$id][$requirement], $required_properties[$requirement])) {
-					unset($clients[$id]);
+			foreach($required_properties as $requirement => $value) {		
+				if(isset($clients[$id][$requirement])) {
+					if(!str_vorhanden($clients[$id][$requirement], $required_properties[$requirement])) {
+						unset($clients[$id]);
+					}
 				}
 			} 
 		}
@@ -216,10 +218,14 @@
 	if(in_array($_GET["format"], $possible_output_format)) {
 		switch($_GET["format"]) {
 			case "json":
-				print_r(json_encode($filtered_raw_result));
+				foreach($filtered_raw_result as $result) {
+					print_r(json_encode($result));
+				}
 			break;
 			case "php":
-				print_r($filtered_raw_result);
+				foreach($filtered_raw_result as $result) {
+					print_r($result);
+				}
 			break;
 		}
 	} else {
