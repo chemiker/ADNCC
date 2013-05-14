@@ -53,18 +53,11 @@
 	function kick_clients_by_properties($clients, $required_properties) {
 		$finish_him = array();
 		foreach($clients as $id => $fields) {
-<<<<<<< HEAD
 			foreach($required_properties as $requirement => $value) {		
 				if(isset($clients[$id][$requirement])) {
 					if(!str_vorhanden($clients[$id][$requirement], $required_properties[$requirement])) {
 						unset($clients[$id]);
 					}
-=======
-			foreach($required_properties as $requirement => $value) {			
-				if(!str_vorhanden($clients[$id][$requirement], $required_properties[$requirement])) {
-					unset($clients[$id]);
-					break;
->>>>>>> 278234661a7eb12050efe7159fa809362d097691
 				}
 			} 
 		}
