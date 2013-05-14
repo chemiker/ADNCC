@@ -1,0 +1,50 @@
+<html><head>
+<title>ADNCC API v1.1 - Documentation</title>
+<style>
+html {
+	background-color:#eeeeee;
+	font-family: "Arial",Helvetica,sans-serif;
+}
+body {
+	margin-left:100px;
+	margin-top:40px;
+	margin-bottom:40px;
+	padding:30px;
+	background-color:white;
+	max-width:600px;
+}
+h1 {
+	text-align:center;
+}
+h2 {
+	margin-top:30px;
+}
+p.code {
+	font-family:monospace;
+}
+</style>
+</head>
+<body>
+<h1>ADNCC API v1.1 Documentation</h1>
+<h2>Call</h2>
+<p>Click <a href="array.php?format=json">here</a> to see the example.</p>
+<p>You can specify the following filters:</p>
+<p><b>format</b> - can be json, js or php</p>
+<p><b>name</b> - comma-separated list of client names. If specified, only those clients will be shown.</p>
+<p><b>filter</b> - list of key:value pairs. See examples.</p>
+<p><b>show</b> - list of attributes. If specified, only those attributes will be shown.</p>
+<p><b>hide</b> - list of attributes. If specified, those attributes will not be shown.</p>
+
+<h2>Examples</h2>
+<p class="code">array.php?format=json&show=name,download_link</p>
+<p class="code">array.php?format=js&name=Felix&hide=name</p>
+<p class="code">array.php?format=json&filter=accessible:YES,push:YES</p>
+
+<h2>Contact</h2>
+<p>Project: <a href="http://adncc.nigma.de">adncc.nigma.de</a></p>
+<p>app.net - 
+	<a href="https://alpha.app.net/nhk">@nhk</a>
+	<a href="https://alpha.app.net/chemiker">@chemiker</a>
+	<a href="https://alpha.app.net/sylar_5">@sylar_5</a>
+</p>
+</body></html>
