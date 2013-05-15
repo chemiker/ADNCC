@@ -79,7 +79,7 @@
 	$possible_get = array("name","show","hide","format","filter");
 	
 	// Mögliche output formate
-	$possible_output_format = array("json","js","php","html","header","hAppy","statistics");
+	$possible_output_format = array("json","js","php","html","header","header_inverse","hAppy","statistics");
 	
 	// Headlines entfernen und Rohdaten anlegen
 	while (($line = fgetcsv($f)) !== false) {
@@ -231,6 +231,9 @@
 			break;
 			case "header":
 					print_r(json_encode($header_dictionary));
+			break;
+			case "header_inverse":
+					print_r(json_encode(array_flip($header_dictionary)));
 			break;
 			// Support for "Unhappy with hAppy function
 			case "hAppy":
