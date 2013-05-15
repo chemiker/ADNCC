@@ -54,6 +54,8 @@ function query_api(params,successfn) {
 
 //returns an Object, which's keys are the accepted column names, and values are human-readable translations.
 function api_columns() {
+
+	//proxy pattern
 	if("header_polled" in api_config) return api_config.header_polled
 
 	api_config.header_polled = query_api({format:"header_inverse"});

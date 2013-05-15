@@ -25,18 +25,15 @@ function showTable(input_obj){
 	document.getElementById("table_container").appendChild(
 			createTable(
 				input_obj,
-				Object.keys(api_columns()),
-				transformator
+				Object.keys(api_columns()),	//columns to show
+				transformator			//transformator; see createTable documentation
 			)
 		);
 }
 
-//read out query, create api param string
-var params = get_params();
-
 //execute ajax query, and call showTable afterwards
 //just pass the whole page query to the api
-query_api(params,showTable);
+query_api(get_params(),showTable);
 
 </script>
 
