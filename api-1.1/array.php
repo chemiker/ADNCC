@@ -169,7 +169,7 @@
 			$raw_result = $key_value_pairs;
 		} else {
 			foreach($key_value_pairs as $key => $value) {
-				if($key_value_pairs[$key]["name"] == $_GET["name"]) {
+				if(strtoupper($key_value_pairs[$key]["name"]) == strtoupper($_GET["name"])) {
 					array_push($raw_result, $key_value_pairs[$key]);
 				}
 			} 
