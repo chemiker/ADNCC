@@ -79,7 +79,7 @@
 	$possible_get = array("name","show","hide","format","filter");
 	
 	// Mögliche output formate
-	$possible_output_format = array("json","js","php","html","header","hAppy");
+	$possible_output_format = array("json","js","php","html","header","hAppy","statistics");
 	
 	// Headlines entfernen und Rohdaten anlegen
 	while (($line = fgetcsv($f)) !== false) {
@@ -232,6 +232,7 @@
 			case "header":
 					print_r(json_encode($header_dictionary));
 			break;
+			// Support for "Unhappy with hAppy function
 			case "hAppy":
 				foreach($key_value_pairs as $key => $value) {
 					foreach($key_value_pairs[$key] as $key2 => $value2) {
@@ -249,6 +250,10 @@
 					}
 				}
 				echo json_encode($key_value_pairs);
+			break;
+			// Support for statistics
+			case "statistics":
+				echo count($result);
 			break;
 		}
 	} else {

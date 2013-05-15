@@ -686,6 +686,102 @@
 				url += '&broadcast_message=YES';
 			}
 		}
+		
+		if(formvalues['delete_post'].checked == true) { 
+			if(url == "") {
+				url += 'delete_post=YES';
+			} else {
+				url += '&delete_post=YES';
+			}
+		}
+
+		if(formvalues['delete_patter_post'].checked == true) { 
+			if(url == "") {
+				url += 'delete_patter_post=YES';
+			} else {
+				url += '&delete_patter_post=YES';
+			}
+		}
+		
+		if(formvalues['show_all_files'].checked == true) { 
+			if(url == "") {
+				url += 'show_all_files=YES';
+			} else {
+				url += '&show_all_files=YES';
+			}
+		}
+		
+		if(formvalues['upload_general_files_publicly'].checked == true) { 
+			if(url == "") {
+				url += 'upload_general_files_publicly=YES';
+			} else {
+				url += '&upload_general_files_publicly=YES';
+			}
+		}
+		
+		if(formvalues['upload_general_files_privately'].checked == true) { 
+			if(url == "") {
+				url += 'upload_general_files_privately=YES';
+			} else {
+				url += '&upload_general_files_privately=YES';
+			}
+		}
+		
+		if(formvalues['change_file_permissions'].checked == true) { 
+			if(url == "") {
+				url += 'change_file_permissions=YES';
+			} else {
+				url += '&change_file_permissions=YES';
+			}
+		}
+		
+		if(formvalues['copy_file_url_to_clipboard'].checked == true) { 
+			if(url == "") {
+				url += 'copy_file_url_to_clipboard=YES';
+			} else {
+				url += '&copy_file_url_to_clipboard=YES';
+			}
+		}
+
+		if(formvalues['file_preview'].checked == true) { 
+			if(url == "") {
+				url += 'file_preview=YES';
+			} else {
+				url += '&file_preview=YES';
+			}
+		}
+		
+		if(formvalues['get_detailed_file_info'].checked == true) { 
+			if(url == "") {
+				url += 'get_detailed_file_info=YES';
+			} else {
+				url += '&get_detailed_file_info=YES';
+			}
+		}
+		
+		if(formvalues['rename_files_in_file_storage'].checked == true) { 
+			if(url == "") {
+				url += 'rename_files_in_file_storage=YES';
+			} else {
+				url += '&rename_files_in_file_storage=YES';
+			}
+		}		
+		
+		if(formvalues['delete_files_from_file_api'].checked == true) { 
+			if(url == "") {
+				url += 'delete_files_from_file_api=YES';
+			} else {
+				url += '&delete_files_from_file_api=YES';
+			}
+		}	
+		
+		if(formvalues['automatically_upload_screenshots'].checked == true) { 
+			if(url == "") {
+				url += 'automatically_upload_screenshots=YES';
+			} else {
+				url += '&automatically_upload_screenshots=YES';
+			}
+		}	
 
 		
 		var request = "pull_html.php?" + url;
@@ -769,7 +865,8 @@ $(document).ready(function()
     	$("#misc_fade").click(function () {$("#misc").slideToggle("fast");});
     	$("#patter_fade").click(function () {$("#patter").slideToggle("fast");});
     	$("#multiacc_fade").click(function () {$("#multiacc").slideToggle("fast");});
-    	
+    	$("#fileapi_fade").click(function () {$("#fileapi").slideToggle("fast");});
+    	    	
     	$("#list_toggle").click(function () {
     		$("#client-list").toggle();
     		$("#client-table").toggle();
@@ -854,6 +951,8 @@ function add(id, text) {
 					<input onclick="absenden()" type="checkbox" id="global_stream" name="global_stream" /> <label for="global_stream">Global stream</label>
 					<input onclick="absenden()" type="checkbox" id="unified_stream" name="unified_stream" /> <label for="unified_stream">Unified Stream</label>
 					<input onclick="absenden()" type="checkbox" id="show_verification_status" name="show_verification_status" /> <label for="show_verification_status">Show verification status</label>
+					<input onclick="absenden()" type="checkbox" id="delete_post" name="delete_post" /> <label for="delete_post">Delete post</label>
+
 					
 		</fieldset>
 		
@@ -892,6 +991,9 @@ function add(id, text) {
 					<input onclick="absenden()" type="checkbox" id="open_patter_room_by_url" name="open_patter_room_by_url" /> <label for="open_patter_room_by_url">Open Patter rooms by URL</label>
 					<input onclick="absenden()" type="checkbox" id="open_link_to_patter_room_in_app" name="open_link_to_patter_room_in_app" /> <label for="open_link_to_patter_room_in_app">Open link to patter-room in App</label>
 					<input onclick="absenden()" type="checkbox" id="broadcast_message" name="broadcast_message" /> <label for="broadcast_message">Broadcast message</label>
+					<input onclick="absenden()" type="checkbox" id="delete_patter_post" name="delete_patter_post" /> <label for="delete_patter_post">Delete Patter post</label>
+
+
 
 		</fieldset>
 		
@@ -937,6 +1039,22 @@ function add(id, text) {
 					<input onclick="absenden()" type="checkbox" id="report_post" name="report_post" /> <label for="report_post">Report post</label>
 				
 		</fieldset>
+		
+		<h3 id="fileapi_fade">File-API</h3>
+		<fieldset class="hide" id="fileapi">
+			<legend class="hide">File-API</legend>	
+					<input onclick="absenden()" type="checkbox" id="show_all_files" name="show_all_files" /> <label for="show_all_files"> Show all files</label>
+					<input onclick="absenden()" type="checkbox" id="upload_general_files_publicly" name="upload_general_files_publicly" /> <label for="upload_general_files_publicly">Upload general files publicly</label>
+					<input onclick="absenden()" type="checkbox" id="upload_general_files_privately" name="upload_general_files_privately" /> <label for="upload_general_files_privately">Upload general files privately</label>
+					<input onclick="absenden()" type="checkbox" id="change_file_permissions" name="change_file_permissions" /> <label for="change_file_permissions">Change file permissions (private/public)</label>
+					<input onclick="absenden()" type="checkbox" id="copy_file_url_to_clipboard" name="copy_file_url_to_clipboard" /> <label for="copy_file_url_to_clipboard">Copy file URL to clipboard</label>
+					<input onclick="absenden()" type="checkbox" id="file_preview" name="file_preview" /> <label for="file_preview">File preview</label>
+					<input onclick="absenden()" type="checkbox" id="get_detailed_file_info" name="get_detailed_file_info" /> <label for="get_detailed_file_info">Get detailed file info</label>
+					<input onclick="absenden()" type="checkbox" id="rename_files_in_file_storage" name="rename_files_in_file_storage" /> <label for="rename_files_in_file_storage">Rename files in file storage</label>
+					<input onclick="absenden()" type="checkbox" id="delete_files_from_file_api" name="delete_files_from_file_api" /> <label for="delete_files_from_file_api">Delete files from file API</label>
+					<input onclick="absenden()" type="checkbox" id="automatically_upload_screenshots" name="automatically_upload_screenshots" /> <label for="automatically_upload_screenshots">Automatically upload screenshots</label>
+		</fieldset>
+						
 		
 		<h3 id="customization_fade">Customization</h3>
 		<fieldset class="hide" id="customization">
