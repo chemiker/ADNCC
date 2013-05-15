@@ -61,9 +61,16 @@ function td_classes(string,obj) {
 
 
 
+function transform_header(str) {
+	if (str in api_columns())
+		return api_columns()[str]
+	else
+		return str;
+}
+
 transformator = {
 	cell: transform_cell,
-	header: function(str){return str;},
+	header: transform_header,
 	tr_class: tr_classes,
 	td_class: td_classes,
 	columns_to_remove: ["download_link"]

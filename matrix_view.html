@@ -24,7 +24,7 @@ function showTable(input_obj){
 	document.getElementById("table_container").appendChild(
 			createTable(
 				input_obj,
-				getColumns(),
+				Object.keys(api_columns()),
 				transformator
 			)
 		);
