@@ -21,6 +21,7 @@ function array_remove_array(arr,arr_to_rem) {
 //file.html?a=b&c=d --> {a:"b", c:"d"}
 function get_params() {
 	var prmstr = window.location.search.substr(1);
+	
 	var prmarr = prmstr.split ("&");
 	var params = {};
 
@@ -28,6 +29,5 @@ function get_params() {
 		var tmparr = prmarr[i].split("=");
 		params[tmparr[0]] = tmparr[1];
 	}
-	
 	return params;
 }

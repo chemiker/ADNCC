@@ -10,46 +10,53 @@ api_config = {
 	 * The url can be absolute or relative to the executing html file, but should not conain the domain name (see XMLHttpRequest)
 	 *
 	 */
-	url: "../api-1.1/array.php",
+	url: "api-1.1/array.php",
 	
 	/*
-	 * This should contain accepted api params, without "format"
+	 * This should contain accepted api params
 	 */
-	accepted_params: ["name","filter","show","hide"]
+	accepted_params: ["name","filter","show","hide","format"]
+
 }
 
 
 
 /*
  * arguments:
- *  query: query to be passed to adncc api
+ *  params: {key:value,key:value} to pass as ?key=value&key=value}
  *
  *  successfn: function(res) which takes the query result as input
  *      if this is null, the function will be called synchronously, and the result will be returned as function result.
  *
  *
  */
-function query_api(query,successfn) {
+function query_api(params,successfn) {
 	var xmlhttp=new XMLHttpRequest();
 
-	//make sure query works (starts with &)
-	if(query) {
-		if (query[0]!='&') {
-			if (query[0] == '?')
-				query = "&" + query.substring(1);
-			else
-				query = "&" + query;
+	//filter arguments
+	var param_str = "";
+	for(i in api_config.accepted_params) {
+		if(api_config.accepted_params[i] in params) {
+			if(param_str != "") param_str = param_str+"&";
+			param_str = param_str + api_config.accepted_params[i] + "=" + params[api_config.accepted_params[i]];
 		}
-	} else {
-		query = ""
 	}
+
+	var query_str = "?"+param_str;
 
 	//determine if call is asynchronous or not
 	var async=false;
 	if(successfn)
 		async=true;
 		
-	var query_complete = "?format=json"+query;
+	//if format not given, append format=json
+	var query_complete = query_str;
+	if(!("format" in params)) {
+		if(query_complete="?")
+			query_complete = "?format=json"
+		else
+			query_complete = query_complete + "&format=json";
+	}
 	
 	console.log("querying API: "+query_complete);
 	xmlhttp.open("GET",api_config.url+query_complete,async);
@@ -76,73 +83,3 @@ return ["name","platform","last_updated","minimum_os_version","known_active_deve
 
 
 
-/*
- *generate an html table object from api output:
- *
- * input_obj: output of query_api
- *
- * columns: array (sorted) of columns to show
- * 
- * transformator_inp = {
- *  	cell: function(string,obj),     //output: what to put in cell
- *  	header: function(string),       //output: what to put in table header (column names)
- *  	tr_class: function(obj)         //output: classes to add to tr
- * 		td_class: function(string,obj), //output: classes to add to tr
- *                                      //inputs: 
- *											string: column name, 
- *											obj: row data
- *										//access cell content as obj[string]
- *
- *		columns_to_remove: [String]	    //list of columns which don't need to be shown (ex.: a transformator which puts download_link in name)
- *
- *										// if a function/value is null or undefined, the raw data will be used.
- *  }
- *
- */
-function createTable(input_obj,columns_inp,transformator_inp) {
-
-	//read transformator from input
-	var transformator = {
-		cell : transformator_inp.cell || function(string,obj){return obj[string];},
-		header:transformator_inp.header||function(string){return string;},
-		tr_class : transformator_inp.tr_class || function(obj){return ""},
-		td_class : transformator_inp.td_class || function(obj){return ""},
-		columns_to_remove: transformator_inp.columns_to_remove || []
-	};
-	var columns = array_remove_array(columns_inp,transformator.columns_to_remove);
-
-
-
-	var table = document.createElement("table");
-
-	//create header
-	var tr = document.createElement("tr");
-	tr.id = "line_header";
-	for(i in columns) {
-		var h = document.createElement("th");
-		var str = columns[i];
-		str = transformator.header(str);
-		h.innerHTML = str;
-		h.className = "column_"+columns[i];
-		tr.appendChild(h);
-	}
-	table.appendChild(tr);
-
-	//create body
-	for (j in input_obj) {
-		var tr = document.createElement("tr");
-		tr.id = "line_"+input_obj[j]["name"];
-		tr.className = "line_"+input_obj[j]["name"]+" "+transformator.tr_class(input_obj[j]);
-		for (i in columns) {
-			var d = document.createElement("td");
-			var str = input_obj[j][columns[i]];
-			var raw_str = str; //needed later for YES/NO detection
-			str = transformator.cell(columns[i],input_obj[j])
-			d.innerHTML = str;
-			d.className = "column_"+columns[i]+" line_"+input_obj[j]["name"]+" "+transformator.td_class(columns[i],input_obj[j]);
-			tr.appendChild(d);
-		}
-		table.appendChild(tr);
-	}
-	return table;
-}
