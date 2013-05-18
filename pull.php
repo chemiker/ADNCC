@@ -80,7 +80,7 @@ if($_GET !== array()) {
 		foreach($key_value_pairs as $key_data => $pair_data) {
 			if($anfrage[$key_anfrage] === $pair_data[$key_anfrage]) {
 			} else {
-				array_push($delete, $pair_data["name"]);		
+					array_push($delete, $pair_data["name"].$pair_data["platform"]);	
 			}
 		}
 	}
@@ -89,11 +89,13 @@ if($_GET !== array()) {
 	$delete = array_unique($delete);
 
 	foreach($key_value_pairs as $key => $client) {
-		if(!in_array($client["name"], $delete)) {
+		if(!in_array($client["name"].$client["platform"], $delete) ) {
 			array_push($result, $client);
 		}
 	} 
 }	
+
+//print_r($anfrage);
 	
 if($_GET == array()) {  
 	echo json_encode($key_value_pairs);

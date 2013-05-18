@@ -11,18 +11,6 @@
 		
 		$date_version = str_split($value["last_updated"], 10);
 		echo "<div class=\"listed-client\">\n";
-		echo "	<div class=\"left\">";
-		echo "		<h4><a href=\"".$value["download_link"]."\" title=\"Download: ".$value["name"]."\">".$value["name"]." <span class=\"download\"></span></a></h4>";
-		echo "		On ".$value["platform"];
-		if($value["minimum_os_version"] !== "") {
-			echo " (System Version: ".$value["minimum_os_version"].")<br />\n";
-		} else {
-			echo "<br />";
-		}
-		if($value["supported_languages"] !== "") {
-			echo "		Available in ".$value["supported_languages"]."\n";
-		}
-		echo "	</div>";
 		echo "	<div class=\"right\">";
 		if(count($developer) == 1) {
 			echo "		Developer account: <a href=\"https://alpha.app.net/".trim($developer[0], "@")."\">".$developer[0]."</a><br />";
@@ -45,7 +33,22 @@
 			//echo substr($version,1,strlen($version)-1);
 			echo"	 (Version ".substr($version,1,strlen($version)-1).")<br />\n";
 		}
-		echo "		".$value["misc_notes"]."\n";
+		echo "		<em>".$value["misc_notes"]."</em>\n";
+		echo "	</div>";
+		echo "	<div class=\"left\">";
+		echo "		<h4><a href=\"".$value["download_link"]."\" title=\"Download: ".$value["name"]."\">".$value["name"]." <span class=\"download\"></span></a></h4>";
+		echo "		On ".$value["platform"];
+		if($value["minimum_os_version"] !== "") {
+			echo " (System Version: ".$value["minimum_os_version"].")<br />\n";
+		} else {
+			echo "<br />";
+		}
+		if($value["supported_languages"] !== "") {
+			echo "		Available in ".$value["supported_languages"]."\n";
+		}
+		if($value["known_limitations"] !== "") {
+			echo "<br/>\n		<strong>Known limitations:</strong> ".$value["known_limitations"]."\n";
+		}
 		echo "	</div>";
 		echo "</div>\n<hr />\n";
 	}

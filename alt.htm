@@ -38,14 +38,6 @@
 			}
 		}
 		
-		if($("input[name='platform']:checked").val() == 'iPhone/iPad') {
-			if(url == "") {
-				url += 'platform=iPhone/iPad';
-			} else {
-				url += '&platform=iPhone/iPad';
-			}
-		}
-		
 		if($("input[name='platform']:checked").val() == 'Windows Phone') {
 			if(url == "") {
 				url += 'platform=Windows Phone';
@@ -927,7 +919,6 @@ function add(id, text) {
 				<input onclick="absenden()" type="radio" name="platform" id="android" value="Android" /><label for="android">Android</label>
 				<input onclick="absenden()" type="radio" name="platform" id="iphone" value="iPhone" /><label for="iphone">iPhone</label>
 				<input onclick="absenden()" type="radio" name="platform" id="ipad" value="iPad" /><label for="ipad">iPad</label>
-				<input onclick="absenden()" type="radio" name="platform" id="iphoneipad" value="iPhone/iPad" /><label for="iphoneipad">iPhone/iPad</label>
 				<input onclick="absenden()" type="radio" name="platform" id="windowsphone" value="Windows Phone" /><label for="windowsphone">Windows Phone</label>
 				<input onclick="absenden()" type="radio" name="platform" id="windows" value="Windows" /><label for="windows">Windows</label>
 				<input onclick="absenden()" type="radio" name="platform" id="web" value="Web" /><label for="web">Web</label>
