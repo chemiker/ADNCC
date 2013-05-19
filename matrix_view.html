@@ -21,7 +21,8 @@
 
 //function to be called after ajax query
 function showTable(input_obj){
-	document.getElementById("table_activity_indicator").remove();
+	var toRem = document.getElementById("table_activity_indicator");
+	toRem.parentElement.removeChild(toRem);
 	document.getElementById("table_container").appendChild(
 			createTable(
 				input_obj,
